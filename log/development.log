@@ -1,0 +1,559 @@
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-29 00:13:51 +0000
+
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rake db:migrate RAILS_ENV=development
+
+):
+  activerecord (4.1.4) lib/active_record/migration.rb:389:in `check_pending!'
+  activerecord (4.1.4) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.1.4) lib/active_support/callbacks.rb:82:in `run_callbacks'
+  actionpack (4.1.4) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.4) lib/rails/engine.rb:514:in `call'
+  railties (4.1.4) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/benstein/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/benstein/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/benstein/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.2ms)
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (43.2ms)
+  [1m[36m (1.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (18.2ms)[0m  select sqlite_version(*)
+  [1m[36m (1.6ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateListings (20141005000558)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  CREATE TABLE "listings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "price" decimal, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141005000558"]]
+  [1m[35m (13.5ms)[0m  commit transaction
+Migrating to AddAttachmentImageToListings (20141005015650)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "listings" ADD "image_file_name" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "listings" ADD "image_content_type" varchar(255)[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "listings" ADD "image_file_size" integer
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "listings" ADD "image_updated_at" datetime[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141005015650"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Migrating to DeviseCreateUsers (20141009225557)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (1.3ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141009225557"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+Migrating to AddNameToUsers (20141012171903)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "users" ADD "name" varchar(255)
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141012171903"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+Migrating to AddUserIdToListings (20141013224714)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "listings" ADD "user_id" integer
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141013224714"]]
+  [1m[35m (2.0ms)[0m  commit transaction
+Migrating to CreateOrders (20141015215504)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "orders" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141015215504"]]
+  [1m[35m (1.5ms)[0m  commit transaction
+Migrating to AddListingIdToOrders (20141015221916)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  ALTER TABLE "orders" ADD "listing_id" integer
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141015221916"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+Migrating to AddFieldsToOrders (20141015222909)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "orders" ADD "buyer_id" integer
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "orders" ADD "seller_id" integer[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141015222909"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+Migrating to AddRecipientToUsers (20141023211621)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "users" ADD "recipient" varchar(255)[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141023211621"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-29 00:25:41 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ListingsController#index as HTML
+  [1m[35mListing Load (17.3ms)[0m  SELECT "listings".* FROM "listings"   ORDER BY created_at DESC
+  [1m[36mUser Load (32.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 11  ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered listings/index.html.erb within layouts/application (180.4ms)
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 8350ms (Views: 6623.2ms | ActiveRecord: 50.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-29 00:25:53 +0000
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2014-10-29 00:25:53 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-29 00:25:53 +0000
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-10-29 00:25:53 +0000
+
+
+Started GET "/assets/pages.css?body=1" for 127.0.0.1 at 2014-10-29 00:25:53 +0000
+
+
+Started GET "/assets/listings.css?body=1" for 127.0.0.1 at 2014-10-29 00:25:53 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-29 00:25:53 +0000
+
+
+Started GET "/assets/jquery.turbolinks.js?body=1" for 127.0.0.1 at 2014-10-29 00:25:53 +0000
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-10-29 00:25:53 +0000
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-10-29 00:25:53 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-29 00:25:53 +0000
+
+
+Started GET "/assets/listings.js?body=1" for 127.0.0.1 at 2014-10-29 00:25:53 +0000
+
+
+Started GET "/assets/custom.js?body=1" for 127.0.0.1 at 2014-10-29 00:25:53 +0000
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-10-29 00:25:53 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-29 00:25:53 +0000
+
+
+Started GET "/pages/about" for 127.0.0.1 at 2014-10-29 00:26:21 +0000
+Processing by PagesController#about as HTML
+  Rendered pages/about.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_header.html.erb (2.2ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 289ms (Views: 288.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/pages/contact" for 127.0.0.1 at 2014-10-29 00:26:23 +0000
+Processing by PagesController#contact as HTML
+  Rendered pages/contact.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 178ms (Views: 177.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-29 00:26:23 +0000
+Processing by ListingsController#index as HTML
+  [1m[35mListing Load (0.3ms)[0m  SELECT "listings".* FROM "listings"   ORDER BY created_at DESC
+  Rendered listings/index.html.erb within layouts/application (2.6ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 150ms (Views: 149.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-10-29 00:26:28 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.4ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (314.2ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 465ms (Views: 435.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-10-29 00:26:29 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (25.9ms)
+  Rendered layouts/_header.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 214ms (Views: 212.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-29 00:26:31 +0000
+Processing by ListingsController#index as HTML
+  [1m[36mListing Load (0.2ms)[0m  [1mSELECT "listings".* FROM "listings"   ORDER BY created_at DESC[0m
+  Rendered listings/index.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 150ms (Views: 148.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-29 01:06:24 +0000
+Processing by ListingsController#index as HTML
+  [1m[35mListing Load (76.6ms)[0m  SELECT "listings".* FROM "listings"   ORDER BY created_at DESC
+  Rendered listings/index.html.erb within layouts/application (110.6ms)
+  Rendered layouts/_header.html.erb (1.3ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 804ms (Views: 698.4ms | ActiveRecord: 76.6ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2014-10-29 01:06:28 +0000
+
+
+Started GET "/assets/listings.css?body=1" for 127.0.0.1 at 2014-10-29 01:06:28 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:28 +0000
+
+
+Started GET "/assets/pages.css?body=1" for 127.0.0.1 at 2014-10-29 01:06:28 +0000
+
+
+Started GET "/assets/jquery.turbolinks.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:28 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:28 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-29 01:06:28 +0000
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-10-29 01:06:28 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:28 +0000
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:28 +0000
+
+
+Started GET "/assets/custom.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:28 +0000
+
+
+Started GET "/assets/listings.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:28 +0000
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:29 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:29 +0000
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:29 +0000
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-29 01:06:38 +0000
+Processing by ListingsController#index as HTML
+  [1m[36mListing Load (15.3ms)[0m  [1mSELECT "listings".* FROM "listings"   ORDER BY created_at DESC[0m
+  Rendered listings/index.html.erb within layouts/application (16.2ms)
+  Rendered layouts/_header.html.erb (0.8ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 273ms (Views: 256.6ms | ActiveRecord: 15.3ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2014-10-29 01:06:39 +0000
+
+
+Started GET "/assets/pages.css?body=1" for 127.0.0.1 at 2014-10-29 01:06:39 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-29 01:06:39 +0000
+
+
+Started GET "/assets/listings.css?body=1" for 127.0.0.1 at 2014-10-29 01:06:39 +0000
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-10-29 01:06:39 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:39 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:39 +0000
+
+
+Started GET "/assets/jquery.turbolinks.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:39 +0000
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:39 +0000
+
+
+Started GET "/assets/custom.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:39 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:39 +0000
+
+
+Started GET "/assets/listings.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:39 +0000
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:39 +0000
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:39 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:39 +0000
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-29 01:06:56 +0000
+Processing by ListingsController#index as HTML
+  [1m[35mListing Load (26.0ms)[0m  SELECT "listings".* FROM "listings"   ORDER BY created_at DESC
+  Rendered listings/index.html.erb within layouts/application (27.1ms)
+  Rendered layouts/_header.html.erb (62.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 330ms (Views: 303.4ms | ActiveRecord: 26.0ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2014-10-29 01:06:56 +0000
+
+
+Started GET "/assets/pages.css?body=1" for 127.0.0.1 at 2014-10-29 01:06:56 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:56 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-29 01:06:56 +0000
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-10-29 01:06:56 +0000
+
+
+Started GET "/assets/listings.css?body=1" for 127.0.0.1 at 2014-10-29 01:06:56 +0000
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:56 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:56 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:56 +0000
+
+
+Started GET "/assets/listings.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:56 +0000
+
+
+Started GET "/assets/jquery.turbolinks.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:56 +0000
+
+
+Started GET "/assets/custom.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:56 +0000
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:56 +0000
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:56 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-29 01:06:56 +0000
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-29 01:08:10 +0000
+Processing by ListingsController#index as HTML
+  [1m[36mListing Load (39.2ms)[0m  [1mSELECT "listings".* FROM "listings"   ORDER BY created_at DESC[0m
+  Rendered listings/index.html.erb within layouts/application (47.5ms)
+  Rendered layouts/_header.html.erb (0.6ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 1100ms (Views: 1048.4ms | ActiveRecord: 39.2ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2014-10-29 01:08:11 +0000
+
+
+Started GET "/assets/pages.css?body=1" for 127.0.0.1 at 2014-10-29 01:08:11 +0000
+
+
+Started GET "/assets/listings.css?body=1" for 127.0.0.1 at 2014-10-29 01:08:11 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-29 01:08:11 +0000
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-10-29 01:08:11 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-29 01:08:11 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-29 01:08:11 +0000
+
+
+Started GET "/assets/jquery.turbolinks.js?body=1" for 127.0.0.1 at 2014-10-29 01:08:11 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-29 01:08:11 +0000
+
+
+Started GET "/assets/custom.js?body=1" for 127.0.0.1 at 2014-10-29 01:08:11 +0000
+
+
+Started GET "/assets/listings.js?body=1" for 127.0.0.1 at 2014-10-29 01:08:11 +0000
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-10-29 01:08:11 +0000
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-10-29 01:08:11 +0000
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-10-29 01:08:11 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-29 01:08:11 +0000
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-29 01:26:48 +0000
+Processing by ListingsController#index as HTML
+  [1m[35mListing Load (108.8ms)[0m  SELECT "listings".* FROM "listings"   ORDER BY created_at DESC
+  Rendered listings/index.html.erb within layouts/application (119.7ms)
+  Rendered layouts/_header.html.erb (0.9ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 3802ms (Views: 3648.2ms | ActiveRecord: 108.8ms)
+
+
+Started GET "/assets/listings.css?body=1" for 127.0.0.1 at 2014-10-29 01:26:52 +0000
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2014-10-29 01:26:52 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-29 01:26:52 +0000
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-10-29 01:26:52 +0000
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-10-29 01:26:52 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-29 01:26:52 +0000
+
+
+Started GET "/assets/pages.css?body=1" for 127.0.0.1 at 2014-10-29 01:26:52 +0000
+
+
+Started GET "/assets/listings.js?body=1" for 127.0.0.1 at 2014-10-29 01:26:52 +0000
+
+
+Started GET "/assets/jquery.turbolinks.js?body=1" for 127.0.0.1 at 2014-10-29 01:26:52 +0000
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-10-29 01:26:52 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-29 01:26:52 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-29 01:26:52 +0000
+
+
+Started GET "/assets/custom.js?body=1" for 127.0.0.1 at 2014-10-29 01:26:53 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-29 01:26:53 +0000
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-10-29 01:26:53 +0000
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-29 01:47:24 +0000
+Processing by ListingsController#index as HTML
+  [1m[36mListing Load (48.1ms)[0m  [1mSELECT "listings".* FROM "listings"   ORDER BY created_at DESC[0m
+  Rendered listings/index.html.erb within layouts/application (58.9ms)
+  Rendered layouts/_header.html.erb (1.6ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 615ms (Views: 557.8ms | ActiveRecord: 48.1ms)
+
+
+Started GET "/assets/listings.css?body=1" for 127.0.0.1 at 2014-10-29 01:47:25 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-29 01:47:25 +0000
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-10-29 01:47:25 +0000
+
+
+Started GET "/assets/jquery.turbolinks.js?body=1" for 127.0.0.1 at 2014-10-29 01:47:25 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-29 01:47:25 +0000
+
+
+Started GET "/assets/pages.css?body=1" for 127.0.0.1 at 2014-10-29 01:47:25 +0000
+
+
+Started GET "/assets/listings.js?body=1" for 127.0.0.1 at 2014-10-29 01:47:25 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-29 01:47:25 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-29 01:47:25 +0000
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2014-10-29 01:47:25 +0000
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-10-29 01:47:25 +0000
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-10-29 01:47:25 +0000
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-10-29 01:47:25 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-29 01:47:25 +0000
+
+
+Started GET "/assets/custom.js?body=1" for 127.0.0.1 at 2014-10-29 01:47:25 +0000
