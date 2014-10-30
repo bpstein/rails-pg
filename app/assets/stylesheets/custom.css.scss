@@ -40,14 +40,21 @@ body {
 
 .jumbotron {
   background-image: url('https://s3-us-west-1.amazonaws.com/peergear/site-images/jumbotron.jpg');
+  background-position:50% 50%;
+  background-size:cover; 
+  height: 600px;
   h1, h2 {
     font-family: guardian-egyptt, georgia, serif;
     color: #FFFFFF;
   }
+  h2 {
+    margin-top: 210px;
+  }
 }
 
-h1 {
-  
+img {
+  max-height: 200px;
+  max-width: 140px;
 }
 
 .footer {

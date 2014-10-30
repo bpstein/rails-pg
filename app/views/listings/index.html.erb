@@ -1,11 +1,13 @@
 <div class="jumbotron">
-  <h1>Rent gear. Save cash. Go adventure.</h1>
+  <h1>Rent gear.</h1>
+  <h1>Save cash.</h1>
+  <h1>Start your adventure.</h1>
   <h2>The peer-to-peer marketplace for sports and outdoor gear.</h2>
 </div>
 
 <div class="row">
   <% @listings.each do |listing| %>
-    <div class="col-md-8">
+    <div class="col-md-3">
       <div class="thumbnail">
         <%= link_to image_tag(listing.image.url), listing %>
         <div class="caption">
