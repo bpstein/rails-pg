@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :categories
+
   devise_for :users
   resources :listings do 
     resources :orders, only: [:new, :create]
