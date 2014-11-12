@@ -12441,3 +12441,29 @@ ActionView::Template::Error (undefined method `place' for #<Listing:0x007f93cb24
   Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
   Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
   Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (18.5ms)
+  [1m[36mActiveRecord::SchemaMigration Load (19.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddLocationToListing (20141112224640)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (154.8ms)[0m  [1mALTER TABLE "listings" ADD "address" varchar(255)[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "listings" ADD "city" varchar(255)
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "listings" ADD "postcode" varchar(255)[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "listings" ADD "country" varchar(255)
+  [1m[36mSQL (191.8ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141112224640"]]
+  [1m[35m (253.3ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
