@@ -56,6 +56,9 @@ group :development, :test do
   gem 'sqlite3'
 end
 
+# Use Letter Opener for emails in development
+gem 'letter_opener', group: :development
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
