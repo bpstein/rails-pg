@@ -30,45 +30,46 @@
     <%= f.label :description %><br>
     <%= f.text_area :description, class: "form-control"  %>
   </div>
-  <div class="form-group">
-    <%= f.label :address %><br>
-<<<<<<< HEAD
-    <%= f.text_area :address, class: "form-control"  %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :address %><br>
+        <%= f.text_area :address, class: "form-control"  %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :city %><br>
+        <%= f.text_area :city, class: "form-control"  %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :postcode %><br>
+        <%= f.text_area :postcode, class: "form-control"  %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :country %><br>
+        <%= f.text_area :country, class: "form-control"  %>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <%= f.label :city %><br>
-    <%= f.text_area :city, class: "form-control"  %>
-  </div>
-  <div class="form-group">
-    <%= f.label :postcode %><br>
-    <%= f.text_area :postcode, class: "form-control"  %>
-  </div>
-  <div class="form-group">
-    <%= f.label :country %><br>
-    <%= f.text_area :country, class: "form-control"  %>
-=======
-    <%= f.text_field :address, class: "form-control"  %>
-  </div>
-  <div class="form-group">
-    <%= f.label :city %><br>
-    <%= f.text_field :city, class: "form-control"  %>
-  </div>
-  <div class="form-group">
-    <%= f.label :postcode %><br>
-    <%= f.text_field :postcode, class: "form-control"  %>
-  </div>
-  <div class="form-group">
-    <%= f.label :country %><br>
-    <%= f.text_field :country, class: "form-control"  %>
->>>>>>> 1ed5df07e6f7916c43fcfe751acd199cf8a64a8e
-  </div>
-  <div class="form-group">
-    <%= f.label :price %><br>
-    <%= f.text_field :price, class: "form-control"  %>
-  </div>
-  <div class="form-group">
-    <%= f.label :image %><br>
-    <%= f.file_field :image, class: "form-control"  %>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :price %><br>
+        <%= f.text_field :price, class: "form-control"  %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :image %><br>
+        <%= f.file_field :image, class: "form-control"  %>
+      </div>
+    </div>
   </div>
   <% if current_user.recipient.blank? %>
     <br>
@@ -76,18 +77,25 @@
     <h4>Bank details are required to collect receipts for successful transactions</h4>
     <br>
 
-     <div class="form-group">
-      <%= label_tag :country %>
-      <%= text_field_tag :country, nil, { :name => nil, :'data-stripe' => "country", class: "form-control" } %>
-    </div>
-    <div class="form-group">
-      <%= label_tag :routing_number %>
-      <%= text_field_tag :routing_number, nil, { :name => nil, :'data-stripe' => "routingNumber", class: "form-control" } %>
-    </div>
-    <div class="form-group">
-      <%= label_tag :account_number %>
-      <%= text_field_tag :account_number, nil, { :name => nil, :'data-stripe' => "accountNumber", class: "form-control" } %>
-    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= label_tag :country %>
+          <%= text_field_tag :country, nil, { :name => nil, :'data-stripe' => "country", class: "form-control" } %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= label_tag :routing_number %>
+          <%= text_field_tag :routing_number, nil, { :name => nil, :'data-stripe' => "routingNumber", class: "form-control" } %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= label_tag :account_number %>
+          <%= text_field_tag :account_number, nil, { :name => nil, :'data-stripe' => "accountNumber", class: "form-control" } %>
+        </div>
+      </div>
   <% end %>
 
     <div class="form-group">
