@@ -14215,3 +14215,649 @@ Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-11-12 01:48:31 +0000
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-11-12 01:48:31 +0000
 >>>>>>> 1ed5df07e6f7916c43fcfe751acd199cf8a64a8e
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.5ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_bookings_on_resource_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_bookings_on_resource_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-17 21:17:51 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (16.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ListingsController#index as HTML
+  [1m[35mListing Load (29.4ms)[0m  SELECT "listings".* FROM "listings"   ORDER BY created_at DESC
+  [1m[36mUser Load (23.4ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (20.5ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 6  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered listings/index.html.erb within layouts/application (1146.4ms)
+  [1m[36mCategory Load (7.8ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  Rendered layouts/_header.html.erb (63.5ms)
+  Rendered layouts/_footer.html.erb (0.7ms)
+Completed 200 OK in 6320ms (Views: 5770.1ms | ActiveRecord: 82.7ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2014-11-17 21:17:59 +0000
+
+
+Started GET "/assets/pages.css?body=1" for 127.0.0.1 at 2014-11-17 21:17:59 +0000
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2014-11-17 21:17:59 +0000
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-11-17 21:17:59 +0000
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-11-17 21:17:59 +0000
+
+
+Started GET "/assets/listings.css?body=1" for 127.0.0.1 at 2014-11-17 21:17:59 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-11-17 21:17:59 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-11-17 21:17:59 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-11-17 21:17:59 +0000
+
+
+Started GET "/assets/jquery.turbolinks.js?body=1" for 127.0.0.1 at 2014-11-17 21:17:59 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-11-17 21:17:59 +0000
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2014-11-17 21:17:59 +0000
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-11-17 21:17:59 +0000
+
+
+Started GET "/assets/custom.js?body=1" for 127.0.0.1 at 2014-11-17 21:17:59 +0000
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-11-17 21:17:59 +0000
+
+
+Started GET "/assets/listings.js?body=1" for 127.0.0.1 at 2014-11-17 21:17:59 +0000
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-11-17 21:17:59 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-11-17 21:17:59 +0000
+
+
+Started GET "/fonts/bootstrap/glyphicons-halflings-regular.woff" for 127.0.0.1 at 2014-11-17 21:18:01 +0000
+
+ActionController::RoutingError (No route matches [GET] "/fonts/bootstrap/glyphicons-halflings-regular.woff"):
+  actionpack (4.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.4) lib/rails/engine.rb:514:in `call'
+  railties (4.1.4) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/benstein/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/benstein/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/benstein/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.4ms)
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (110.2ms)
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (982.5ms)
+
+
+Started GET "/fonts/bootstrap/glyphicons-halflings-regular.ttf" for 127.0.0.1 at 2014-11-17 21:18:03 +0000
+
+ActionController::RoutingError (No route matches [GET] "/fonts/bootstrap/glyphicons-halflings-regular.ttf"):
+  actionpack (4.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.4) lib/rails/engine.rb:514:in `call'
+  railties (4.1.4) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/benstein/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/benstein/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/benstein/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (7.3ms)
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.3ms)
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (44.2ms)
+
+
+Started GET "/listings?category=Snowboards" for 127.0.0.1 at 2014-11-17 21:18:38 +0000
+Processing by ListingsController#index as HTML
+  Parameters: {"category"=>"Snowboards"}
+  [1m[35mCategory Load (0.2ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."name" = 'Snowboards' LIMIT 1
+  [1m[36mListing Load (0.2ms)[0m  [1mSELECT "listings".* FROM "listings"  WHERE "listings"."category_id" = 3  ORDER BY created_at DESC[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 6  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered listings/index.html.erb within layouts/application (3.5ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  Rendered layouts/_header.html.erb (3.1ms)
+  Rendered layouts/_footer.html.erb (0.6ms)
+Completed 200 OK in 284ms (Views: 281.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/listings?category=Bikes" for 127.0.0.1 at 2014-11-17 21:18:41 +0000
+Processing by ListingsController#index as HTML
+  Parameters: {"category"=>"Bikes"}
+  [1m[35mCategory Load (0.2ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."name" = 'Bikes' LIMIT 1
+  [1m[36mListing Load (0.5ms)[0m  [1mSELECT "listings".* FROM "listings"  WHERE "listings"."category_id" = 1  ORDER BY created_at DESC[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 6  ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered listings/index.html.erb within layouts/application (32.8ms)
+  [1m[35mCategory Load (0.1ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered layouts/_header.html.erb (2.0ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 213ms (Views: 209.6ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/listings?category=Bikes" for 127.0.0.1 at 2014-11-17 22:04:50 +0000
+Processing by ListingsController#index as HTML
+  Parameters: {"category"=>"Bikes"}
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT  "categories".* FROM "categories"  WHERE "categories"."name" = 'Bikes' LIMIT 1[0m
+  [1m[35mListing Load (0.6ms)[0m  SELECT "listings".* FROM "listings"  WHERE "listings"."category_id" = 1  ORDER BY created_at DESC
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 6  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered listings/index.html.erb within layouts/application (134.6ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  Rendered layouts/_header.html.erb (2.6ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 720ms (Views: 585.5ms | ActiveRecord: 24.4ms)
+
+
+Started GET "/assets/listings.css?body=1" for 127.0.0.1 at 2014-11-17 22:04:52 +0000
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-11-17 22:04:52 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-11-17 22:04:52 +0000
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2014-11-17 22:04:52 +0000
+
+
+Started GET "/assets/pages.css?body=1" for 127.0.0.1 at 2014-11-17 22:04:52 +0000
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2014-11-17 22:04:52 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-11-17 22:04:52 +0000
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-11-17 22:04:52 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-11-17 22:04:52 +0000
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2014-11-17 22:04:52 +0000
+
+
+Started GET "/assets/listings.js?body=1" for 127.0.0.1 at 2014-11-17 22:04:52 +0000
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-11-17 22:04:52 +0000
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-11-17 22:04:52 +0000
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-11-17 22:04:52 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-11-17 22:04:52 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-11-17 22:04:52 +0000
+
+
+Started GET "/assets/jquery.turbolinks.js?body=1" for 127.0.0.1 at 2014-11-17 22:04:52 +0000
+
+
+Started GET "/assets/custom.js?body=1" for 127.0.0.1 at 2014-11-17 22:04:52 +0000
+
+
+Started GET "/fonts/bootstrap/glyphicons-halflings-regular.woff" for 127.0.0.1 at 2014-11-17 22:04:52 +0000
+
+ActionController::RoutingError (No route matches [GET] "/fonts/bootstrap/glyphicons-halflings-regular.woff"):
+  actionpack (4.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.4) lib/rails/engine.rb:514:in `call'
+  railties (4.1.4) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/benstein/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/benstein/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/benstein/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (9.2ms)
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (5.1ms)
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.3ms)
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (89.1ms)
+
+
+Started GET "/fonts/bootstrap/glyphicons-halflings-regular.ttf" for 127.0.0.1 at 2014-11-17 22:04:52 +0000
+
+ActionController::RoutingError (No route matches [GET] "/fonts/bootstrap/glyphicons-halflings-regular.ttf"):
+  actionpack (4.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.4) lib/rails/engine.rb:514:in `call'
+  railties (4.1.4) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/benstein/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/benstein/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/benstein/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (17.2ms)
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.3ms)
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (55.5ms)
+
+
+Started GET "/listings?category=Bikes" for 127.0.0.1 at 2014-11-17 22:05:07 +0000
+Processing by ListingsController#index as HTML
+  Parameters: {"category"=>"Bikes"}
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."name" = 'Bikes' LIMIT 1
+  [1m[36mListing Load (0.4ms)[0m  [1mSELECT "listings".* FROM "listings"  WHERE "listings"."category_id" = 1  ORDER BY created_at DESC[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 6  ORDER BY "users"."id" ASC LIMIT 1[0m
+  Rendered listings/index.html.erb within layouts/application (61.0ms)
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories"
+  Rendered layouts/_header.html.erb (2.3ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 386ms (Views: 323.1ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2014-11-17 22:05:07 +0000
+
+
+Started GET "/assets/pages.css?body=1" for 127.0.0.1 at 2014-11-17 22:05:07 +0000
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2014-11-17 22:05:07 +0000
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-11-17 22:05:07 +0000
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-11-17 22:05:07 +0000
+
+
+Started GET "/assets/listings.css?body=1" for 127.0.0.1 at 2014-11-17 22:05:07 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-11-17 22:05:07 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-11-17 22:05:07 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-11-17 22:05:07 +0000
+
+
+Started GET "/assets/jquery.turbolinks.js?body=1" for 127.0.0.1 at 2014-11-17 22:05:07 +0000
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-11-17 22:05:08 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-11-17 22:05:08 +0000
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2014-11-17 22:05:08 +0000
+
+
+Started GET "/assets/custom.js?body=1" for 127.0.0.1 at 2014-11-17 22:05:08 +0000
+
+
+Started GET "/assets/listings.js?body=1" for 127.0.0.1 at 2014-11-17 22:05:08 +0000
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-11-17 22:05:08 +0000
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-11-17 22:05:08 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-11-17 22:05:08 +0000
+
+
+Started GET "/fonts/bootstrap/glyphicons-halflings-regular.woff" for 127.0.0.1 at 2014-11-17 22:05:08 +0000
+
+ActionController::RoutingError (No route matches [GET] "/fonts/bootstrap/glyphicons-halflings-regular.woff"):
+  actionpack (4.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.4) lib/rails/engine.rb:514:in `call'
+  railties (4.1.4) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/benstein/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/benstein/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/benstein/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (7.8ms)
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.1ms)
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (53.1ms)
+
+
+Started GET "/fonts/bootstrap/glyphicons-halflings-regular.ttf" for 127.0.0.1 at 2014-11-17 22:05:08 +0000
+
+ActionController::RoutingError (No route matches [GET] "/fonts/bootstrap/glyphicons-halflings-regular.ttf"):
+  actionpack (4.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.4) lib/rails/engine.rb:514:in `call'
+  railties (4.1.4) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/benstein/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/benstein/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/benstein/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (5.8ms)
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (38.8ms)
+
+
+Started GET "/listings?category=Bikes" for 127.0.0.1 at 2014-11-17 22:05:10 +0000
+Processing by ListingsController#index as HTML
+  Parameters: {"category"=>"Bikes"}
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT  "categories".* FROM "categories"  WHERE "categories"."name" = 'Bikes' LIMIT 1[0m
+  [1m[35mListing Load (0.4ms)[0m  SELECT "listings".* FROM "listings"  WHERE "listings"."category_id" = 1  ORDER BY created_at DESC
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 6  ORDER BY "users"."id" ASC LIMIT 1
+  Rendered listings/index.html.erb within layouts/application (38.6ms)
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  Rendered layouts/_header.html.erb (3.6ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 256ms (Views: 252.2ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/assets/categories.css?body=1" for 127.0.0.1 at 2014-11-17 22:05:10 +0000
+
+
+Started GET "/assets/orders.css?body=1" for 127.0.0.1 at 2014-11-17 22:05:10 +0000
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2014-11-17 22:05:10 +0000
+
+
+Started GET "/assets/listings.css?body=1" for 127.0.0.1 at 2014-11-17 22:05:10 +0000
+
+
+Started GET "/assets/pages.css?body=1" for 127.0.0.1 at 2014-11-17 22:05:10 +0000
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-11-17 22:05:10 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-11-17 22:05:10 +0000
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-11-17 22:05:10 +0000
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-11-17 22:05:10 +0000
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-11-17 22:05:10 +0000
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-11-17 22:05:10 +0000
+
+
+Started GET "/assets/jquery.turbolinks.js?body=1" for 127.0.0.1 at 2014-11-17 22:05:10 +0000
+
+
+Started GET "/assets/categories.js?body=1" for 127.0.0.1 at 2014-11-17 22:05:10 +0000
+
+
+Started GET "/assets/custom.js?body=1" for 127.0.0.1 at 2014-11-17 22:05:10 +0000
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-11-17 22:05:10 +0000
+
+
+Started GET "/assets/orders.js?body=1" for 127.0.0.1 at 2014-11-17 22:05:10 +0000
+
+
+Started GET "/assets/listings.js?body=1" for 127.0.0.1 at 2014-11-17 22:05:10 +0000
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-11-17 22:05:10 +0000
+
+
+Started GET "/fonts/bootstrap/glyphicons-halflings-regular.woff" for 127.0.0.1 at 2014-11-17 22:05:10 +0000
+
+ActionController::RoutingError (No route matches [GET] "/fonts/bootstrap/glyphicons-halflings-regular.woff"):
+  actionpack (4.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.4) lib/rails/engine.rb:514:in `call'
+  railties (4.1.4) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/benstein/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/benstein/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/benstein/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (13.9ms)
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.3ms)
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (53.8ms)
+
+
+Started GET "/fonts/bootstrap/glyphicons-halflings-regular.ttf" for 127.0.0.1 at 2014-11-17 22:05:10 +0000
+
+ActionController::RoutingError (No route matches [GET] "/fonts/bootstrap/glyphicons-halflings-regular.ttf"):
+  actionpack (4.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.4) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.4) lib/rails/engine.rb:514:in `call'
+  railties (4.1.4) lib/rails/application.rb:144:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/benstein/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/benstein/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/benstein/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.5ms)
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.6ms)
+  Rendered /Users/benstein/.rvm/gems/ruby-2.1.2/gems/actionpack-4.1.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (40.1ms)

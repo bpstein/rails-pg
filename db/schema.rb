@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20141112230229) do
 
   create_table "bookings", force: true do |t|
@@ -22,9 +21,6 @@ ActiveRecord::Schema.define(version: 20141112230229) do
   end
 
   add_index "bookings", ["resource_id"], name: "index_bookings_on_resource_id"
-=======
-ActiveRecord::Schema.define(version: 20141112014603) do
->>>>>>> 1ed5df07e6f7916c43fcfe751acd199cf8a64a8e
 
   create_table "categories", force: true do |t|
     t.string   "name"
