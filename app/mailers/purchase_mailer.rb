@@ -4,7 +4,9 @@ class PurchaseMailer < ActionMailer::Base
 
 	def purchase_receipt purchase
 		@purchase = purchase
-		mail to: purchase.email, subject: "Thanks for booking with PeerGear!"
+		Rails.logger.debug '*******'
+		Rails.logger.debug purchase.inspect
+		mail to: purchase.buyer.email, subject: "Thanks for booking with PeerGear!"
 	end
 
 end 
