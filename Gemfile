@@ -70,14 +70,3 @@ gem 'letter_opener', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
-
-group :development, :test do
-  gem 'pry'
-  gem 'pry-rails'
-  gem 'pry-doc'
- # gem 'pry-debugger'
- gem 'pry-byebug'
-  gem 'pry-stack_explorer'
-  # gem 'rubocop'
-end
