@@ -40,7 +40,7 @@ class OrdersController < ApplicationController
         :currency => "usd",
         :card => token
         )
-      flash[:notice] = "Thanks for ordering!"
+      flash[:notice] = "Thanks for ordering! The details of your order have been delivered to your registered email address."
     rescue Stripe::CardError => e
       flash[:danger] = e.message
     end

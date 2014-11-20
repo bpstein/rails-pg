@@ -10,4 +10,12 @@ class Listing < ActiveRecord::Base
   belongs_to :category
   has_many :orders
   has_many :users, through: :bookings
+
+  # after_create :email_seller
+
+  private
+
+	def email_seller
+		ListingMailer.listing_receipt(self).deliver
+	end
 end

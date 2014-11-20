@@ -10,4 +10,10 @@ class User < ActiveRecord::Base
   has_many :sales, class_name: "Order", foreign_key: "seller_id"
   has_many :purchases, class_name: "Order", foreign_key: "buyer_id"
 
+  after_create :send_welcome_message
+
+  def send_welcome_message
+  	UserMailer.signup_confirmation(self).deliver
+  end
+
 end
