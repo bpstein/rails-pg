@@ -12,7 +12,7 @@
         <%= link_to image_tag(listing.image.url), listing %>
         <div class="caption">
           <h3><%= listing.name %></h3>
-          <p><%= number_to_currency(listing.price) %></p>
+          <p><%= number_to_currency(listing.price) %> per day</p>
           <p><%= "Borrow from #{listing.user.name}" %></p>
         </div>
       </div>
