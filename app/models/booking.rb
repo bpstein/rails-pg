@@ -1,4 +1,5 @@
 class Booking < ActiveRecord::Base
+  validates :end_date, :start_date, presence: :true
   belongs_to :user
   belongs_to :listing
 
