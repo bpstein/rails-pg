@@ -1,14 +1,14 @@
 @import "bootstrap";
 
 body {
-  background-color: #F5F5F1;
+  background-color: #ecf0f1;
   color: #333333;
   font-family: Arial, Helvetica, sans-serif; 
   padding-bottom: 70px;
 }
 
 .navbar-default {
-  background-color: #EFEFEB;
+  background-color: #bdc3c7;
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -16,6 +16,10 @@ body {
   font-size: 14px;
   font-weight: bold;
   color: #0192B5;
+}
+
+.container {
+  background-color: #FFF;
 }
 
 .center {
@@ -56,6 +60,20 @@ body {
 img {
   max-height: 200px;
   max-width: 140px;
+}
+
+.homepage-image {
+  background-image: url('https://s3-us-west-1.amazonaws.com/peergear/site-images/jumbo.jpg');
+  top: 0;
+  background-size:cover; 
+  height: 700px;
+  width: 100%;
+  padding: 0 !important;
+  margin: 0 !important;
+  h1, h2 {
+    font-family: "Helvetica", georgia, serif;
+    color: #FFF;
+  }
 }
 
 .footer {

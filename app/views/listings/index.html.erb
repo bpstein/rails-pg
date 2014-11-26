@@ -11,8 +11,9 @@
       <div class="thumbnail">
         <%= link_to image_tag(listing.image.url), listing %>
         <div class="caption">
-          <h3><%= listing.name %></h3>
+          <h4><%= listing.name %></h4>
           <p><%= number_to_currency(listing.price) %> per day</p>
+          <p><%= listing.description %></p>
           <p><%= "Borrow from #{listing.user.name}" %></p>
         </div>
       </div>
