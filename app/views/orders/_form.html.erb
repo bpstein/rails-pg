@@ -9,6 +9,21 @@
   
   <div class="col-md-8">
     <%= form_for([@listing, @order]) do |f| %>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= label_tag :start_date %>
+            <%= text_field_tag :start_date, nil, { :name => nil, id:"checkin" ,class: "form-control" }%>
+        
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= label_tag :end_date %>
+            <%= text_field_tag :end_date, nil, { :name => nil,id: "checkout",class: "form-control" } %>
+          </div>
+        </div>
+      </div>    
       <% if @order.errors.any? %>
         <div id="error_explanation" class="alert alert-danger alert-dismissable">
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -25,13 +40,6 @@
       <div id="stripe_error" class="alert alert-danger" style="display:none">
         <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
       </div>
-
-
-
-      
-
-
-
       <div class="form-group">
         <%= f.label :address %>
         <%= f.text_field :address, class: "form-control" %>
@@ -76,3 +84,46 @@
     <% end %>
   </div>
 </div>
+
+
+<script>
+ $(window).ready(function(){
+      var nowTemp = new Date();
+      var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+      var checkin = $('#checkin').datepicker({
+        format: 'yyyy/mm/dd',
+        onRender: function(date) {
+          return date.valueOf() < now.valueOf() ? 'disabled' : '';
+        }
+      }).on('changeDate', function(ev) {
+         var check_out = $("#checkout").val();
+         if(check_out.length>0 && ev.date.valueOf() > checkout.date.valueOf()){
+          alert("Please make sure the start date comes before the end date");
+         }
+        
+          var newDate = new Date(ev.date)
+          newDate.setDate(newDate.getDate() + 1);
+          checkout.setValue(newDate);
+          $("#checkout").val('');
+        
+           checkin.hide();
+        
+      }).data('datepicker');
+      var checkout = $('#checkout').datepicker({
+        format: 'yyyy/mm/dd',
+        onRender: function(date) {
+           return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+           
+        }
+      }).on('changeDate', function(ev) {
+        checkout.hide();
+        if (ev.date.valueOf() < checkin.date.valueOf()){
+           alert("Please make sure the start date comes before the end date");
+        }
+      }).data('datepicker');
+    });
+    
+  
+
+
+</script>
