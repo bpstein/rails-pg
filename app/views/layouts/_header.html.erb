@@ -15,7 +15,13 @@
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
 	      	<li class=""><%= link_to "About", pages_about_path %></li>
-	      	<li class=""><%= link_to "Contact", pages_contact_path %></li>	
+	      	<li class=""><%= link_to "Contact", pages_contact_path %></li>
+	        <%if user_signed_in? %>
+	        	<li class=""><%=text_field_tag "Search",nil,:id=>"search_location"%>
+                   <%=image_tag 'search.jpeg',:width=>"25",:height=>"25",:class=>"search_image"%>
+                  
+	        	</li>
+	        <%end%>			
 	      	<li class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse<b class="caret"></b></a>
 		          <ul class="dropdown-menu">
@@ -53,3 +59,8 @@
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>
+<script>
+  $(document).ready(function(){
+  	 $("#search_location").geocomplete();  
+  });
+</script>
