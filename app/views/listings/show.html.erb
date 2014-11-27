@@ -9,6 +9,8 @@
       <p><%= number_to_currency(@listing.price) %> per day</p>
       <p><%= @listing.description %></p>
     <br>
+    <p><%= text_field_tag "start_date",@listing.start_date.strftime("%Y/%m/%d"),{:id=>"checkin"}%></p>
+
     <div class="left">
       <%= link_to "Rent It Now", new_listing_order_path(@listing), class: "btn btn-primary", data: { no_turbolink: true } %>
     </div>
@@ -20,3 +22,53 @@
   <%= link_to 'Edit', edit_listing_path(@listing), class: "btn btn-link" %> |
 <% end %>
 <%= link_to 'Back', listings_path, class: "btn btn-link" %>
+
+<script>
+ $(window).ready(function(){
+      var nowTemp = new Date();
+      var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+      var unavailableDates = ['<%=@listing.start_date.strftime("%Y/%m/%d")%>','<%=@listing.end_date.strftime("%Y/%m/%d")%>'];
+      var check_in = new Date(unavailableDates[0].split("/")[0],unavailableDates[0].split("/")[1],unavailableDates[0].split("/")[2],0,0,0,0);
+      var check_out = new Date(unavailableDates[1].split("/")[0],unavailableDates[1].split("/")[1],unavailableDates[1].split("/")[2],0,0,0,0);
+      var checkin = $('#checkin').datepicker({
+        format: 'yyyy/mm/dd',
+        onRender: function(date) {
+          // if(date.getMonth() >= check_in.getMonth()){
+          //   return 'disabled';
+          // }
+          // else{
+
+          if(check_out.getDate() >= date.getDate() &&  date.getDate() >= check_in.getDate() ){
+            return ' ';
+          }
+          else{
+            return 'disabled';
+          }
+        // }
+      }
+      }).on('changeDate', function(ev) {
+         checkin.hide();
+      }).data('datepicker');
+    
+      var checkout = $('#checkout').datepicker({
+        format: 'yyyy/mm/dd',
+        onRender: function(date) {
+           return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+           
+        }
+      }).on('changeDate', function(ev) {
+        checkout.hide();
+      }).data('datepicker');
+       
+      $("td.day").hover(function() {
+        $(this).tooltip({
+          title : '<%=@listing.price%>'
+        });
+    
+      });
+    });
+
+  
+</script>
+
+

@@ -55,7 +55,7 @@
     <div class="col-md-6">
       <div class="form-group">
         <%= f.label :country %><br>
-        <%= f.text_field :country, id: "my_location",class: "form-control"  %>
+        <%= f.text_area :country,class: "form-control"  %>
       </div>
     </div>
   </div>
@@ -158,7 +158,8 @@
         }
       }).data('datepicker');
        
-  
+      $("#listing_country,#listing_city").geocomplete();  
     });
+
   
 </script>
