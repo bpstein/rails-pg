@@ -14,4 +14,11 @@ class UserMailer < ActionMailer::Base
 		mail to: @user.email, subject: "Thanks for listing your items with PeerGear!"
 	end
 
+	def borrowing_notification listing
+		@user = listing.user
+		@listing = listing
+		mail to: @user.email, subject: "Someone is interested in borrowing your gear!"
+	end
+
+
 end 

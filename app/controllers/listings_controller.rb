@@ -5,6 +5,7 @@ class ListingsController < ApplicationController
 
   def seller
     @listings = Listing.where(user: current_user).order("created_at DESC")
+    @notifications = current_user.received_notifications
   end
 
   # GET /listings
@@ -88,6 +89,12 @@ class ListingsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def remove_notification
+    @notification = Notification.find(params[:notification_id])
+    @notification.destroy
+    redirect_to seller_path
+  end  
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  
+
   resources :categories
 
   devise_for :users
@@ -13,6 +15,9 @@ Rails.application.routes.draw do
   get 'sales' => "orders#sales"
   get 'purchases' => "orders#purchases"
 
+  match '/search' => 'home#search',:via=>[:get]
+  get '/remove_notification' => "listings#remove_notification"
+  
   root 'listings#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -18,6 +18,12 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @listing = Listing.find(params[:listing_id])
+    @sender = current_user
+    @receiver = @listing.user
+    unless @sender.id == @receiver.id
+      UserMailer.borrowing_notification(@listing) 
+      @notification = Notification.create(:message=>"#{@sender.name} is interested in borrowing your gears",:sender_id=>@sender.id,:receiver_id=>@receiver.id)
+    end 
   end
 
   # POST /orders
@@ -31,15 +37,12 @@ class OrdersController < ApplicationController
     @order.buyer_id = current_user.id
     @order.seller_id = @seller.id
 
-    Stripe.api_key = ENV["STRIPE_API_KEY"]
+    Stripe.api_key = 'sk_test_ZgOgRjyJPS2N38WRwhpbMTqx'
+    
     token = params[:stripeToken]
 
     begin
-      charge = Stripe::Charge.create(
-        :amount => (@listing.price * 100).floor,
-        :currency => "usd",
-        :card => token
-        )
+      charge = Stripe::Charge.create(:amount => (@listing.price * 100).floor,:currency => "usd",:card => token)
       flash[:notice] = "Thanks for ordering! The details of your order have been delivered to your registered email address."
     rescue Stripe::CardError => e
       flash[:danger] = e.message

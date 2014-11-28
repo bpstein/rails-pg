@@ -1,0 +1,40 @@
+<div class="container">
+	<div class="row">
+   <% @listings.each do |listing|%>
+        <div class="col-md-3">
+	    <div class="thumbnail"> 
+	 	 <div class="span6"><%= image_tag listing.image.url(:original) %></div>
+	 	 <div class="price"><%= "$#{listing.price}"%></div>
+	      <h3 class="descript_font"><%= listing.description %></h2>
+	      <h4 class="city_font"><%= listing.city%></h3>
+	    </div>
+	</div>
+    
+   <%end%>
+    </div>
+</div>
+
+<style>
+ .city_font{
+   color: #cacccd;
+   text-transform: capitalize;
+ }
+ .descript_font{
+   color: #cacccd;
+   text-transform: capitalize;
+ }
+ .span6 img{
+   max-width : 100%;
+   max-height: 300px; 
+ }
+ .price{
+ 	background: none repeat scroll 0 0 black;
+    border-radius: 5px;
+    color: white;
+    font-size: 20px;
+    opacity: 0.62;
+    position: absolute;
+    top: 82px;
+ }
+
+</style>
