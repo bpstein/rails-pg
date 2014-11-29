@@ -60,7 +60,7 @@
         checkout.hide();
       }).data('datepicker');
        
-      $("td.day").hover(function() {
+      $("td.day").not(".disabled").hover(function() {
         $(this).tooltip({
           title : '<%=@listing.price%>'
         });

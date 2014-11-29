@@ -1,3 +1,11 @@
+<%if @notifications.present?%>
+	<%@notifications.each do |noti|%>
+		<div class="alert alert-success alert-dismissable">
+		<button class="noti-close close" aria-hidden="true" data-dismiss="alert" type="button" data="<%=noti.id%>">×</button>
+		<div id="flash_notice"><%=noti.message%></div>
+		</div>
+	<%end%>
+<%end%>	
 <h2>Lender Dashboard</h2>
 <h3>Pending Reservations</h3>
 <p>Pending reservations are presented below. People are interested in borrowing your gear!</p>
@@ -48,3 +56,14 @@
 <% if user_signed_in? %>
   <%= link_to 'New Listing', new_listing_path, class: "btn btn-primary", data: { no_turbolink: true } %>
 <% end %>
+
+<script>
+  $(document).on('click','.noti-close',function(){
+     var notify_id = $(this).attr('data');
+     $.ajax({
+     	url: '/remove_notification',
+     	method: 'GET',
+     	data: {notification_id : notify_id}
+     })
+  });
+</script>
