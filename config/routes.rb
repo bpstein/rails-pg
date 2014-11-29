@@ -16,7 +16,10 @@ Rails.application.routes.draw do
   get 'purchases' => "orders#purchases"
 
   match '/search' => 'home#search',:via=>[:get]
-  get '/remove_notification' => "listings#remove_notification"
+  get '/send_notification' => "listings#send_notification"
+  # get '/remove_notification' => "listings#remove_notification"
+  get '/accept_request' => "listings#accept_request"
+  get '/reject_request' => "listings#reject_request"
   
   root 'listings#index'
 
