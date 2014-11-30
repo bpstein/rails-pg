@@ -1,11 +1,16 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :set_listing, only: [:show, :edit, :update, :destroy,:send_notification]
+  before_action :set_notification, only: [:accept_request,:reject_request]
   before_filter :authenticate_user!, only: [:new, :seller, :create, :edit, :update, :destroy]
   before_filter :check_user, only: [:edit, :update, :destroy]
 
   def seller
     @listings = Listing.where(user: current_user).order("created_at DESC")
-    @notifications = current_user.received_notifications
+
+    @notifications = current_user.received_notifications.where("status =?","unread")
+    # if @notifications
+    #   @pending_gears = @notifications.map(&:listing)
+    # end 
   end
 
   # GET /listings
@@ -90,9 +95,36 @@ class ListingsController < ApplicationController
     end
   end
 
-  def remove_notification
-    @notification = Notification.find(params[:notification_id])
-    @notification.destroy
+  # def remove_notification
+  #   @notification = Notification.find(params[:notification_id])
+  #   @notification.destroy
+  #   redirect_to seller_path
+  # end 
+
+  def send_notification
+    @sender = current_user
+    @receiver = @listing.user
+    @notification = Notification.find_by_sender_id_and_listing_id(@sender.id,@listing.id)
+    unless @sender.id == @receiver.id && @notification
+      UserMailer.borrowing_notification(@listing) 
+      @notification = Notification.create(:message=>"#{@sender.name} is interested in borrowing your gears",:sender_id=>@sender.id,:receiver_id=>@receiver.id,:listing_id=>@listing.id)
+      respond_to do |format|
+        format.js
+      end
+    end 
+  end 
+
+  def accept_request
+    @notification.update_attributes(:status=>"read",:approval_status=>"accepted")
+    @new_notification = Notification.create(:message=>"#{@sender.name} has accepted your request for borrowing your gears name #{@listing.name}",:sender_id=>@sender.id,:receiver_id=>@receiver.id,:listing_id=>params[:listing_id],:approval_status=>"accepted")
+    UserMailer.accepted_request_for_gear(@new_notification)
+    redirect_to seller_path
+  end
+  
+  def reject_request
+    @notification.update_attributes(:status=>"read",:approval_status=>"rejected")
+    @new_notification = Notification.create(:message=>"#{@sender.name} has rejected your request for borrowing your gears name #{@listing.name}",:sender_id=>@sender.id,:receiver_id=>@receiver.id,:listing_id=>params[:listing_id],:approval_status=>"rejected")
+    UserMailer.rejected_request_for_gear(@new_notification)
     redirect_to seller_path
   end  
 
@@ -101,12 +133,18 @@ class ListingsController < ApplicationController
     def set_listing
       @listing = Listing.find(params[:id])
     end
-
+    
+    def set_notification
+     @notification = Notification.find(params[:id])
+     @listing = Listing.find(params[:listing_id])
+      @sender = current_user
+      @receiver = @listing.user
+    end  
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
       params.require(:listing).permit(:name, :category_id, :description, :address, :city, :postcode, :country, :price, :image,:start_date,:end_date)
     end
-
+    
     def check_user
       if current_user != @listing.user
         redirect_to root_url, alert: "Sorry, this listing belongs to someone else"

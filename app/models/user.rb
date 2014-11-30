@@ -17,4 +17,8 @@ class User < ActiveRecord::Base
   	UserMailer.signup_confirmation(self).deliver
   end
 
+  def is_owner?(user)
+    self.id == user.id
+  end  
+
 end

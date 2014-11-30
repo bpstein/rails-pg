@@ -1,3 +1,9 @@
+<div class="noti_flash hide">
+<div class="alert alert-success alert-dismissable">
+    <button class="noti-close close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
+    <div id="flash_notice">Your request has gone for owner to approval.Please wait !!!</div>
+</div>
+</div>
 <div class="row">
   <div class="col-md-6">
     <div class="thumbnail">
@@ -23,11 +29,15 @@
 
 </div>
  <div class="left">
-      <% if @notification.present? && @notification.status.eql?("Approve") %>
-        <%= link_to "Rent It Now", new_listing_order_path(@listing), class: "btn btn-primary", data: { no_turbolink: true } %>
-      <%else%>
-         <%= link_to "Rent It Now", 'javascript:void(0)', class: "btn btn-primary", data: { no_turbolink: true } %>
-      <%end%>  
+      <%unless current_user.is_owner?(@listing.user)%>
+        <% if @notification.present? && @notification.status.eql?("Approve") %>
+          <%= link_to "Rent It Now", new_listing_order_path(@listing), class: "btn btn-primary", data: { no_turbolink: true } %>
+        <%elsif @notification.present? %>
+          <%= link_to "Rent It Now",'javascript:void(0)', class: "btn btn-primary", data: { no_turbolink: true } %>
+        <%else%>
+           <%= link_to "Rent It Now", 'javascript:void(0)', class: "rent btn btn-primary", data: { no_turbolink: true } %>
+        <%end%> 
+     <%end%>  
 </div>
 
 <% if current_user == @listing.user %>
@@ -76,10 +86,15 @@
     
       });
     });
-
+   $(document).on('click','.rent',function(){
+     $.ajax({
+        url: '/send_notification',
+        data: {id:'<%=@listing.id%>'} 
+     });
+   })
  
 
-  })
+ 
 </script>
 
 
