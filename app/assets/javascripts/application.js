@@ -18,3 +18,38 @@
 //= require_tree .
 
 
+$(window).ready(function(){
+      var nowTemp = new Date();
+      var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+      var checkin = $('#checkin').datepicker({
+        format: 'yyyy/mm/dd',
+        onRender: function(date) {
+          return date.valueOf() < now.valueOf() ? 'disabled' : '';
+        }
+      }).on('changeDate', function(ev) {
+         var check_out = $("#checkout").val();
+         if(check_out.length>0 && ev.date.valueOf() > checkout.date.valueOf()){
+          alert("Please make sure the start date comes before the end date");
+         }
+        
+          var newDate = new Date(ev.date)
+          newDate.setDate(newDate.getDate() + 1);
+          checkout.setValue(newDate);
+          $("#checkout").val('');
+        
+           checkin.hide();
+        
+      }).data('datepicker');
+      var checkout = $('#checkout').datepicker({
+        format: 'yyyy/mm/dd',
+        onRender: function(date) {
+           return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+           
+        }
+      }).on('changeDate', function(ev) {
+        checkout.hide();
+        if (ev.date.valueOf() < checkin.date.valueOf()){
+           alert("Please make sure the start date comes before the end date");
+        }
+      }).data('datepicker');
+});       
