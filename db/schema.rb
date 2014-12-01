@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141112230229) do
+ActiveRecord::Schema.define(version: 20141129144605) do
 
   create_table "bookings", force: true do |t|
     t.datetime "start_time"
@@ -44,6 +44,19 @@ ActiveRecord::Schema.define(version: 20141112230229) do
     t.string   "city"
     t.string   "postcode"
     t.string   "country"
+    t.date     "start_date"
+    t.date     "end_date"
+  end
+
+  create_table "notifications", force: true do |t|
+    t.text     "message"
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "status",          default: "unread"
+    t.integer  "listing_id"
+    t.string   "approval_status"
   end
 
   create_table "orders", force: true do |t|
