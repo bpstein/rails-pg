@@ -29,7 +29,7 @@
 
 </div>
  <div class="left">
-      <%unless current_user.is_owner?(@listing.user)%>
+      <%#unless current_user.is_owner?(@listing.user)%>
         <% if @notification.present? && @notification.status.eql?("Approve") %>
           <%= link_to "Rent It Now", new_listing_order_path(@listing), class: "btn btn-primary", data: { no_turbolink: true } %>
         <%elsif @notification.present? %>
@@ -37,7 +37,7 @@
         <%else%>
            <%= link_to "Rent It Now", 'javascript:void(0)', class: "rent btn btn-primary", data: { no_turbolink: true } %>
         <%end%> 
-     <%end%>  
+     <%#end%>  
 </div>
 
 <% if current_user == @listing.user %>
@@ -47,51 +47,19 @@
 
 <script>
  $(window).ready(function(){
-      var nowTemp = new Date();
-      var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
-      var unavailableDates = ['<%=@listing.start_date.strftime("%Y/%m/%d")%>','<%=@listing.end_date.strftime("%Y/%m/%d")%>'];
-      var check_in = new Date(unavailableDates[0].split("/")[0],unavailableDates[0].split("/")[1],unavailableDates[0].split("/")[2],0,0,0,0);
-      var check_out = new Date(unavailableDates[1].split("/")[0],unavailableDates[1].split("/")[1],unavailableDates[1].split("/")[2],0,0,0,0);
-      var checkin = $('#checkin').datepicker({
-        format: 'yyyy/mm/dd',
-        autoclose: true,
-        onRender: function(date) {
-         
-          if(check_out.getDate() >= date.getDate() &&  date.getDate() >= check_in.getDate() ){
-            return ' ';
-          }
-          else{
-            return 'disabled';
-          }
-      }
-      }).on('changeDate', function(ev) {
-         checkin.hide();
-      }).data('datepicker');
-    
-      var checkout = $('#checkout').datepicker({
-        format: 'yyyy/mm/dd',
-         autoclose: true,
-        onRender: function(date) {
-           return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
-           
-        }
-      }).on('changeDate', function(ev) {
-        checkout.hide();
-      }).data('datepicker');
-       
       $("td.day").not(".disabled").hover(function() {
         $(this).tooltip({
           title : '<%=@listing.price%>'
         });
     
       });
-    });
-   $(document).on('click','.rent',function(){
+  });
+  $(document).on('click','.rent',function(){
      $.ajax({
         url: '/send_notification',
         data: {id:'<%=@listing.id%>'} 
      });
-   })
+  });
  
 
  
