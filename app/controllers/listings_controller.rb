@@ -27,6 +27,8 @@ class ListingsController < ApplicationController
   # GET /listings/1
   # GET /listings/1.json
   def show
+    
+    @notification = Notification.find_by_sender_id_and_listing_id(current_user.id,@listing.id)
   end
 
   # GET /listings/new
