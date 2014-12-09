@@ -54,10 +54,16 @@ end
 # Use sqlite3 for development and testing
 group :development, :test do
   gem 'sqlite3'
+  # gem 'pg'
+  gem 'byebug'
 end
 
 # Use Letter Opener for emails in development
 gem 'letter_opener', group: :development
+gem 'paypal-sdk-rest'
+gem 'countries'
+gem 'country_select'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
