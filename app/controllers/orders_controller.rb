@@ -72,66 +72,28 @@ class OrdersController < ApplicationController
         :items => [{
           :name => @listing.name,
           :sku => @listing.name,
-          :price => "1",#sprintf('%.2f', @listing.price),_attributes
+          :price => sprintf('%.2f', @listing.price),#,_attributes
           :currency => "USD",
           :quantity => '1' }]},
       :amount => {
-        :total => "1.00",#sprintf('%.2f', @listing.price), #* 100).floor,
+        :total => sprintf('%.2f', @listing.price), #* 100).floor,
         :currency => "USD" },
       :description => "This is the payment transaction description." }]})
-# @payment = PayPal::SDK::REST::Payment.new({
-#   :intent => "sale",
-#   :payer => {
-#     :payment_method => "credit_card",
-#     :funding_instruments => [{
-#       :credit_card => {
-#         :type => "visa",
-#         :number => "4417119669820331",
-#         :expire_month => "11",
-#         :expire_year => "2018",
-#         :cvv2 => "874",
-#         :first_name => "Joe",
-#         :last_name => "Shopper",
-#         :billing_address => {
-#           :line1 => "52 N Main ST",
-#           :city => "Johnstown",
-#           :state => "OH",
-#           :postal_code => "43210",
-#           :country_code => "US" }}}]},
-#   :transactions => [{
-#     :item_list => {
-#       :items => [{
-#         :name => "item",
-#         :sku => "item",
-#         :price => "1",
-#         :currency => "USD",
-#         :quantity => 1 }]},
-#     :amount => {
-#       :total => "1.00",
-#       :currency => "USD" },
-#     :description => "This is the payment transaction description." }]})
 
-# Create Payment and return the status(true or false)
-    
     if @payment.create
+      # Payment Id 
+
+      @order.checkout_attributes = { :pay_id => @payment.id,  :status => @payment.state,:payment_time => @payment.create_time,:currency=>@payment.transactions[0].amount.currency }   
       @order.save
       
-      @pay = @order.build_checkout
-       # Payment Id
-      
-      @pay.pay_id = @payment.id
-      @pay.status = @payment.state
-      @pay.payment_time = @payment.create_time
-      @pay.save
-      
       respond_to do |format|
-        if @pay.save
+        if @order.save!
           flash[:notice] = "Thanks for ordering! The details of your order have been delivered to your registered email address."
           format.html { redirect_to root_url }
           format.json { render action: 'show', status: :created, location: @order }
         else
           @payment.error  # Error Hash
-          flash[:error] = "#{@payment.error}.Something went wrong.Please check your details."
+          flash[:error] = "#{@payment.error}.Something went wrong.Your order is not placed.Please check your details."
           format.html { render action: 'new' }
           format.json { render json: @order.errors, status: :unprocessable_entity }
         end
@@ -168,10 +130,7 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:address, :city, :state,:postal_code,:country_code)#,checkout_attributes:[:first_name, :last_name, :card_no,:card_type,:cvv,:expiry_mon,:expiry_yr,:pay_id,:currency,:order_id,:status,:payment_time])
+      params.require(:order).permit(:address, :city, :state,:postal_code,:country_code,checkout_attributes:[:first_name, :last_name, :card_no,:card_type,:cvv,:expiry_mon,:expiry_yr,:pay_id,:currency,:order_id,:status,:payment_time])
     end
 
-    def checkout_params
-      params.require(:order).permit( checkout_attributes:[:first_name, :last_name, :card_no,:card_type,:cvv,:expiry_mon,:expiry_yr,:pay_id,:currency,:order_id,:status,:payment_time])      
-    end 
-end
+  end
