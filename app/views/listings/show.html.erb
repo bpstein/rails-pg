@@ -1,7 +1,7 @@
 <div class="noti_flash hide">
 <div class="alert alert-success alert-dismissable">
     <button class="noti-close close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-    <div id="flash_notice">Your request has gone for owner to approval.Please wait !!!</div>
+    <div id="flash_notice">Your reservation request has been submitted to the owner of this gear. Please wait for their approval. </div>
 </div>
 </div>
 <div class="row">
@@ -30,7 +30,7 @@
 </div>
  <div class="left">
       <%#unless current_user.is_owner?(@listing.user)%>
-        <% if @notification.present? && @notification.approval_status.eql?("accepted") %>
+        <% if @notification.present? && @notification.status.eql?("Approve") %>
           <%= link_to "Rent It Now", new_listing_order_path(@listing), class: "btn btn-primary", data: { no_turbolink: true } %>
         <%elsif @notification.present? %>
           <%= link_to "Rent It Now",'javascript:void(0)', class: "btn btn-primary", data: { no_turbolink: true } %>
@@ -46,21 +46,23 @@
 <%= link_to 'Back', listings_path, class: "btn btn-link" %>
 
 <script>
-   $(window).ready(function(){
-        $("td.day").not(".disabled").hover(function() {
-          $(this).tooltip({
-            title : '<%=@listing.price%>'
-          });
-      
+ $(window).ready(function(){
+      $("td.day").not(".disabled").hover(function() {
+        $(this).tooltip({
+          title : '<%=@listing.price%>'
         });
-    });
-    $(document).on('click','.rent',function(){
-       $.ajax({
-          url: '/send_notification',
-          data: {id:'<%=@listing.id%>'} 
-       });
-    });
-   
+    
+      });
+  });
+  $(document).on('click','.rent',function(){
+     $.ajax({
+        url: '/send_notification',
+        data: {id:'<%=@listing.id%>'} 
+     });
+  });
+ 
+
+ 
 </script>
 
 

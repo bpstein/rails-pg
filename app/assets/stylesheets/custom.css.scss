@@ -1,4 +1,15 @@
+
+
 @import "bootstrap";
+
+.navbar .navbar-default .navbar-static-top {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.jumbotron {
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+}
 
 body {
   background-color: #ecf0f1;
@@ -7,9 +18,9 @@ body {
   padding-bottom: 70px;
 }
 
-.navbar-default {
-  background-color: #bdc3c7;
-}
+// .navbar-default {
+//   background-color: #bdc3c7;
+// }
 
 .navbar-default .navbar-nav > li > a {
   font-family: 'Avenir Next Light', Arial, Helvetica, sans-serif;
@@ -47,6 +58,7 @@ body {
   background-position:50% 50%;
   background-size:cover; 
   height: 600px;
+  margin-left: 0 !important;
   width: 100%;
   h1, h2 {
     font-family: guardian-egyptt, georgia, serif;
@@ -77,11 +89,12 @@ img {
 }
 
 .footer {
-   position: relative;
-   display: block;
+   display: inline;
+   position: static;
    bottom: 0;
    left: 0;
    width: 100%;
+   text-align: center;
    // height: 60px;   /* Height of the footer */
    // background: #6cf;
 }

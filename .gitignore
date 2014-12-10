@@ -20,3 +20,6 @@
 
 # Ignore secrets configuration
 /config/secrets.yml
+
+# Ignore PayPal configuration
+/config/paypal.yml
