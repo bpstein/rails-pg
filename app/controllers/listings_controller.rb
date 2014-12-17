@@ -5,9 +5,11 @@ class ListingsController < ApplicationController
   before_filter :check_user, only: [:edit, :update, :destroy]
 
   def seller
-    @listings = Listing.where(user: current_user).order("created_at DESC")
-
+    # @listings = Listing.where(user: current_user).order("created_at DESC")
+    #Listing.joins(:notifications).where("notifications.sender_id=? and user_id=? and notifications.approval_status=?",current_user.id,current_user.id,"accepted")
+    @listing_notifications = current_user.sent_notifications.where("approval_status =?","accepted")
     @notifications = current_user.received_notifications.where("status =?","unread")
+    #Listing.joins(:notifications).where("notifications.receiver_id=? and user_id=? and notifications.status=?",current_user.id,current_user.id,"unread")
     # if @notifications
     #   @pending_gears = @notifications.map(&:listing)
     # end 
@@ -118,7 +120,7 @@ class ListingsController < ApplicationController
 
   def accept_request
     @notification.update_attributes(:status=>"read",:approval_status=>"accepted")
-    @new_notification = Notification.create(:message=>"#{@sender.name} has accepted your request for borrowing your gears name #{@listing.name}",:sender_id=>@sender.id,:receiver_id=>@receiver.id,:listing_id=>params[:listing_id],:approval_status=>"accepted")
+    @new_notification = Notification.create(:message=>"#{@sender.name} has accepted your request for borrowing your gears name #{@listing.name}",:sender_id=>@sender.id,:receiver_id=>@receiver,:listing_id=>params[:listing_id],:approval_status=>"accepted")
     UserMailer.accepted_request_for_gear(@new_notification)
     redirect_to seller_path
   end
@@ -140,7 +142,7 @@ class ListingsController < ApplicationController
      @notification = Notification.find(params[:id])
      @listing = Listing.find(params[:listing_id])
       @sender = current_user
-      @receiver = @listing.user
+      @receiver = @notification.sender_id
     end  
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params

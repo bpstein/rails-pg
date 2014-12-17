@@ -51,8 +51,9 @@
 		<th class="center">Price</th>
 		<th class="center">Action</th>
 	</tr>
-
-	<% @listings.each do |listing| %>
+    <% @listing_notifications.each do |notification| %>
+	 <% listing = notification.listing %>
+	
 		<tr>
 			<td><%= link_to image_tag(listing.image.url(:thumb)),listing_path(listing) %></td>
 			<td><%= listing.name %></td>
