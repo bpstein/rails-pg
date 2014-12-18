@@ -1,15 +1,16 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:show, :edit, :update, :destroy,:send_notification]
+  before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :set_listing_notify,only: [:send_notification,:accept_request,:reject_request]
   before_action :set_notification, only: [:accept_request,:reject_request]
   before_filter :authenticate_user!, only: [:new, :seller, :create, :edit, :update, :destroy]
   before_filter :check_user, only: [:edit, :update, :destroy]
 
   def seller
     # @listings = Listing.where(user: current_user).order("created_at DESC")
-    #Listing.joins(:notifications).where("notifications.sender_id=? and user_id=? and notifications.approval_status=?",current_user.id,current_user.id,"accepted")
-    @listing_notifications = current_user.sent_notifications.where("approval_status =?","accepted")
+    @reservation_listings = Listing.joins(:notifications).where("notifications.receiver_id=? and user_id=? and notifications.approval_status=?",current_user.id,current_user.id,"accepted")
+    # @listing_notifications = current_user.sent_notifications.where("approval_status =?","accepted")
     @notifications = current_user.received_notifications.where("status =?","unread")
-    #Listing.joins(:notifications).where("notifications.receiver_id=? and user_id=? and notifications.status=?",current_user.id,current_user.id,"unread")
+    @pending_listings = Listing.joins(:notifications).where("notifications.receiver_id=? and user_id=? and notifications.status=?",current_user.id,current_user.id,"unread").select('listings.*,notifications.id as notification_id')
     # if @notifications
     #   @pending_gears = @notifications.map(&:listing)
     # end 
@@ -119,16 +120,16 @@ class ListingsController < ApplicationController
   end 
 
   def accept_request
-    @notification.update_attributes(:status=>"read",:approval_status=>"accepted")
-    @new_notification = Notification.create(:message=>"#{@sender.name} has accepted your request for borrowing your gears name #{@listing.name}",:sender_id=>@sender.id,:receiver_id=>@receiver,:listing_id=>params[:listing_id],:approval_status=>"accepted")
-    UserMailer.accepted_request_for_gear(@new_notification)
+    @notification.update_attributes(:status=>"read",:approval_status=>"accepted",:message=>"#{@sender.name} has accepted your request for borrowing your gears name")
+    # @new_notification = Notification.create(:message=>"#{@sender.name} has accepted your request for borrowing your gears name #{@listing.name}",:sender_id=>@sender.id,:receiver_id=>@receiver,:listing_id=>params[:listing_id],:approval_status=>"accepted")
+    UserMailer.accepted_request_for_gear(@notification)
     redirect_to seller_path
   end
   
   def reject_request
-    @notification.update_attributes(:status=>"read",:approval_status=>"rejected")
-    @new_notification = Notification.create(:message=>"#{@sender.name} has rejected your request for borrowing your gears name #{@listing.name}",:sender_id=>@sender.id,:receiver_id=>@receiver.id,:listing_id=>params[:listing_id],:approval_status=>"rejected")
-    UserMailer.rejected_request_for_gear(@new_notification)
+    @notification.update_attributes(:status=>"read",:approval_status=>"rejected",:message=>"#{@sender.name} has rejected your request for borrowing your gears name")
+    # @new_notification = Notification.create(:message=>"#{@sender.name} has rejected your request for borrowing your gears name #{@listing.name}",:sender_id=>@sender.id,:receiver_id=>@receiver.id,:listing_id=>params[:listing_id],:approval_status=>"rejected")
+    UserMailer.rejected_request_for_gear(@otification)
     redirect_to seller_path
   end  
 
@@ -139,10 +140,13 @@ class ListingsController < ApplicationController
     end
     
     def set_notification
-     @notification = Notification.find(params[:id])
-     @listing = Listing.find(params[:listing_id])
+     @notification = Notification.find(params[:notification_id])
       @sender = current_user
       @receiver = @notification.sender_id
+    end
+
+    def set_listing_notify
+      @listing = Listing.find(params[:listing_id])
     end  
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
