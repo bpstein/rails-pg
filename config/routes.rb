@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :listings do 
+    put 'accept_request' 
+    put 'reject_request' 
+    get 'send_notification' 
     resources :orders, only: [:new, :create]
   end
 
@@ -16,10 +19,9 @@ Rails.application.routes.draw do
   get 'purchases' => "orders#purchases"
 
   match '/search' => 'home#search',:via=>[:get]
-  get '/send_notification' => "listings#send_notification"
+ 
   # get '/remove_notification' => "listings#remove_notification"
-  get '/accept_request' => "listings#accept_request"
-  get '/reject_request' => "listings#reject_request"
+  
   
   root 'listings#index'
 
