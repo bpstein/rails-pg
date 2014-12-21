@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141129144605) do
+ActiveRecord::Schema.define(version: 20141210135648) do
 
   create_table "bookings", force: true do |t|
     t.datetime "start_time"
@@ -27,6 +27,25 @@ ActiveRecord::Schema.define(version: 20141129144605) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "checkouts", force: true do |t|
+    t.string   "pay_id",                  null: false
+    t.string   "status"
+    t.string   "card_type",               null: false
+    t.string   "card_no",      limit: 16, null: false
+    t.integer  "cvv",          limit: 3,  null: false
+    t.integer  "expiry_mon",   limit: 2,  null: false
+    t.integer  "expiry_yr",    limit: 4,  null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "currency",                null: false
+    t.datetime "payment_time",            null: false
+    t.integer  "order_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "checkouts", ["pay_id"], name: "index_checkouts_on_pay_id", unique: true
 
   create_table "listings", force: true do |t|
     t.string   "name"
@@ -68,6 +87,8 @@ ActiveRecord::Schema.define(version: 20141129144605) do
     t.integer  "listing_id"
     t.integer  "buyer_id"
     t.integer  "seller_id"
+    t.string   "postal_code"
+    t.string   "country_code"
   end
 
   create_table "resources", force: true do |t|
