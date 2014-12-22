@@ -51,6 +51,7 @@
         $(this).tooltip({
           title : '<%=@listing.price%>'
         });
+<<<<<<< HEAD
     
       });
   });
@@ -63,6 +64,15 @@
  
 
  
+=======
+    });
+    $(document).on('click','.rent',function(){
+       $.ajax({
+          url: '/listings/<%=@listing.id%>/send_notification' 
+       });
+    });
+   
+>>>>>>> 3c7e4fc2ed5972a5b663efe3773edf14556bb8f2
 </script>
 
 
