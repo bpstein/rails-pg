@@ -31,7 +31,7 @@ class ListingsController < ApplicationController
   # GET /listings/1.json
   def show
     
-    @notification = Notification.find_by_sender_id_and_listing_id(current_user.id,@listing.id)
+    @notification = Notification.find_by_sender_id_and_listing_id(current_user.id,@listing.id) if user_signed_in?
   end
 
   # GET /listings/new
@@ -150,7 +150,7 @@ class ListingsController < ApplicationController
     end  
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:name, :category_id, :description, :address, :city, :postcode, :country, :price, :image,:start_date,:end_date)
+      params.require(:listing).permit(:name, :category_id, :description, :address, :city, :postcode, :price, :image,:start_date,:end_date)
     end
     
     def check_user
